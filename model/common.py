@@ -18,7 +18,23 @@ def generate_random(table):
     """
 
     generated = ''
+    number1 = random.randint(1, 10)
+    number2 = random.randint(1, 10)
+    letter1 = random.choice('abcdefghijklmnopqrstuvwxyz')
+    letter2 = random.choice('abcdefghijklmnopqrstuvwxyz')
+    capital_letter1 = random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    capital_letter2 = random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
 
     # your code
 
     return generated
+
+def remove(table, id_):
+
+    for i in table:
+        if i[0] == id_[0]:
+            table.remove(i)
+
+    return table
+
+
