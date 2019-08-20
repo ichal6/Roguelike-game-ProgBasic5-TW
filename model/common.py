@@ -26,8 +26,8 @@ def generate_random(table):
     capital_letter2 = random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
     special_character1 = random.choice('!#$%&*+-<?@^_~')
     special_character2 = random.choice('!#$%&*+-<?@^_~')
-    id_raw = (str(number1) + str(number2) + special_character1 + letter1 + capital_letter1 + letter2
-    + special_character2 + capital_letter2)
+    id_raw = (str(number1) + str(number2) + special_character1 + letter1 + capital_letter1 
+    + letter2 + special_character2 + capital_letter2)
     id_final = ''.join(random.sample(id_raw, len(id_raw)))
 
     for line in table :
@@ -36,6 +36,8 @@ def generate_random(table):
 
 
     # your code
+
+    generated = id_final
 
     return generated
 

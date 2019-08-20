@@ -100,3 +100,10 @@ def get_average_by_manufacturer(table, manufacturer):
     """
 
     # your code
+
+
+def get_data_to_list():
+    return data_manager.get_table_from_file("model/store/games.csv")
+
+def get_random_id(table):
+    return common.generate_random(table)
