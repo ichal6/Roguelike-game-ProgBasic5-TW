@@ -24,11 +24,11 @@ def run():
 
     choice = None
     while choice != "0":
-        choice = terminal_view.get_choice(options)
+        choice = terminal_view.get_choice(options, "Back to main menu")
         if choice == "1":
             new_record = terminal_view.get_inputs(["Title: ", "Manufacturer: ", "Price: ", "In stock: "], "Please enter value: ")
             new_record.insert(0, store.get_random_id(list_of_games))
-            print(store.add(list_of_games, new_record))
+            list_of_games = store.add(list_of_games, new_record)
         elif choice == "2":
             hr_controller.run()
         elif choice == "3":
