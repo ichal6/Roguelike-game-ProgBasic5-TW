@@ -28,9 +28,7 @@ def add(table, record):
     """
     # your code
 
-    table.append(table, record)
-
-    return table
+    return common.add(table, record)
 
 
 def remove(table, id_):
@@ -65,10 +63,7 @@ def update(table, id_, record):
 
     # your code
 
-    common.remove(table, id_)
-    table = add(table, record)
-
-    return table
+    return common.update(table, id_, record)
 
 
 # special functions:
@@ -107,3 +102,14 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
     """
 
     # your code
+
+def get_data_to_list():
+    return data_manager.get_table_from_file("model/sales/sales.csv")
+
+
+def get_random_id(table):
+    return common.generate_random(table)
+
+
+def export_list_to_file(table):
+    data_manager.write_table_to_file("model/sales/sales.csv", table)
