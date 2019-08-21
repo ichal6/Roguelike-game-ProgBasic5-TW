@@ -1,6 +1,4 @@
 """ Terminal view module """
-from model import common 
-from model import data_manager
 
 def sum_position(table):
     sum_pos = 0
