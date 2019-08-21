@@ -28,17 +28,15 @@ def run():
         if choice == "1":
             new_record = terminal_view.get_inputs(["Title: ", "Manufacturer: ", "Price: ", "In stock: "], "Please enter value: ")
             new_record.insert(0, store.get_random_id(list_of_games))
-            list_of_games = store.add(list_of_games, new_record)
+            store.export_list_to_file(store.add(list_of_games, new_record))
         elif choice == "2":
-            hr_controller.run()
+            pass
         elif choice == "3":
-            inventory_controller.run()
+            pass
         elif choice == "4":
-            accounting_controller.run()
+            pass
         elif choice == "5":
-            sales_controller.run()
-        elif choice == "6":
-            crm_controller.run()
+            pass
         elif choice == "0":
             pass
         else:
