@@ -15,7 +15,6 @@ from model import data_manager
 from model import common
 
 
-
 def add(table, record):
     """
     Add new record to table
@@ -102,3 +101,15 @@ def avg_amount(table, year):
     """
 
     # your code
+
+
+def get_data_to_list():
+    return data_manager.get_table_from_file("model/accounting/items.csv")
+
+
+def get_random_id(table):
+    return common.generate_random(table)
+
+
+def export_list_to_file(table):
+    data_manager.write_table_to_file("model/accounting/items.csv", table)

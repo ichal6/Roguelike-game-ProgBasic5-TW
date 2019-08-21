@@ -34,8 +34,8 @@ def run():
             FIRST_ELEMENT_IN_LIST = 0
             while is_correct is not True:
                 id_of_record_to_remove = terminal_view.get_inputs(["Line_number: "], "Please enter value ")
-                is_correct = store.check_is_number(id_of_record_to_remove[FIRST_ELEMENT_IN_LIST], len(list_of_games))
-            list_of_games = store.remove(list_of_games, store.check_id_by_number(list_of_games, int(id_of_record_to_remove[FIRST_ELEMENT_IN_LIST])))
+                is_correct = common.check_is_number(id_of_record_to_remove[FIRST_ELEMENT_IN_LIST], len(list_of_games))
+            list_of_games = store.remove(list_of_games, common.check_id_by_number(list_of_games, int(id_of_record_to_remove[FIRST_ELEMENT_IN_LIST])))
         elif choice == "3":
             pass
         elif choice == "4":

@@ -51,3 +51,12 @@ def remove(table, id_):
     return table
 
 
+def add(table, new_record):
+    table.append(new_record)
+    return table
+
+
+def update(table, id_, update_record):
+    remove(table, id_)
+    table = add(table, update_record)
+    return table
