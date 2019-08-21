@@ -32,6 +32,9 @@ def run():
                "Average of games"]
 
     choice = None
+
+    title_list = ["ID", "TITLE", "MANUFACTURER", "PRICE", "IN STOCK"]
+
     while choice != "0":
         choice = terminal_view.get_choice(options, "Back to main menu")
         if choice == "1":
@@ -51,5 +54,7 @@ def run():
             pass
         elif choice == "0":
             store.export_list_to_file(list_of_games)
+        elif choice == "*":
+            terminal_view.print_table(list_of_games, title_list)
         else:
             terminal_view.print_error_message("There is no such choice.")

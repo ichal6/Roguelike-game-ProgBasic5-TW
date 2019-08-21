@@ -1,5 +1,13 @@
 """ Terminal view module """
+from model import common 
+from model import data_manager
 
+def sum_position(table):
+    sum_pos = 0
+    for i in range(len(table)):
+        sum_pos += float(table[i])
+
+    return sum_pos
 
 def print_table(table, title_list):
     """
@@ -23,7 +31,38 @@ def print_table(table, title_list):
     """
 
     # your goes code
+    table.insert(0, title_list)
+    
+    len_col = []
+    x = 0
+    for i in table:
+        len_col.append([])
+        for j in range(len(i)):
+            longest_name = len(i[j])
+            len_col[x].append(longest_name)
+        x += 1
 
+    max_line_len = []
+    for i in range(len(title_list)):
+        max_line_len.append([])
+        for k in len_col:
+            max_line_len[i].append(k[i])
+
+    max_line_len = [(max(i)) for i in max_line_len]
+    max_line = sum_position(max_line_len)
+
+    dashed_line = ("═" * int(max_line + 1 + len(title_list)))
+    head = [(title_list[q].rjust(max_line_len[q])+'│') for q in range(len(title_list))]
+    header = '│' + ''.join(head)
+    table.pop(0)
+    print(dashed_line)
+    print(header)
+    print(dashed_line)
+    for i in table:
+        body_list = [(i[q].rjust(max_line_len[q])+'│') for q in range(len(i))]
+        body = '│' + ''.join(body_list)
+        print(body)
+    print(dashed_line)
 
 def print_result(result, label):
     """
@@ -36,9 +75,31 @@ def print_result(result, label):
     Returns:
         None: This function doesn't return anything it only prints to console.
     """
-
+    
     # your code
 
+    if isinstance(result, dict):
+        print('{0:>35}'.format(label))
+        to_print_a = [[i[0], i[1]] for i in result.items()]
+        to_print_b = [('{0:>35} : {1:>1}'.format(i[0], i[1])) for i in to_print_a]
+        [print(i) for i in to_print_b]
+    elif isinstance(result, list):
+        if isinstance(result[0], list):
+            print('{0:>20}'.format(label))
+            for i in range(len(result)):
+                for j in range(len(result[i])):
+                    result[i][j] = str(result[i][j])
+            for i in result:
+                body_list = [('{0:^21}-'.format(i[q])) for q in range(len(i))]
+                body = '-' + ''.join(body_list)
+                print(body)
+        else:
+            print('{0:>20}'.format(label))
+            [print('{0:>20}'.format(i)) for i in result]
+
+    elif isinstance(result, str):
+        print('{} : {}'.format(label, result))
+        
 
 def print_menu(title, list_options, exit_message):
     """
