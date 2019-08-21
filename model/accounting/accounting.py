@@ -28,9 +28,7 @@ def add(table, record):
     """
     # your code
 
-    table.append(record)
-
-    return table
+    return common.add(table, record)
 
 
 def remove(table, id_):
@@ -65,10 +63,7 @@ def update(table, id_, record):
 
     # your code
 
-    common.remove(table, id_)
-    table = add(table, record)
-
-    return table
+    return common.update(table, id_, record)
 
 
 # special functions:
