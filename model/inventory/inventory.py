@@ -27,9 +27,7 @@ def add(table, record):
     """
     # your code
 
-    table.append(record)
-
-    return table
+    return common.add(table, record)
 
 
 def remove(table, id_):
@@ -64,10 +62,7 @@ def update(table, id_, record):
 
     # your code
 
-    common.remove(table, id_)
-    table = add(table, record)
-
-    return table
+    return common.update(table, id_, record)
 
 
 # special functions:
@@ -99,3 +94,15 @@ def get_average_durability_by_manufacturers(table):
     """
 
     # your code
+
+
+def get_data_to_list():
+    return data_manager.get_table_from_file("model/inventory/inventory.csv")
+
+
+def get_random_id(table):
+    return common.generate_random(table)
+
+
+def export_list_to_file(table):
+    data_manager.write_table_to_file("model/inventory/inventory.csv", table)
