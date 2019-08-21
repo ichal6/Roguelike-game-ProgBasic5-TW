@@ -41,10 +41,11 @@ def generate_random(table):
 
     return generated
 
+
 def remove(table, id_):
 
     for i in table:
-        if i[0] == id_[0]:
+        if i[0] == id_:
             table.remove(i)
 
     return table
