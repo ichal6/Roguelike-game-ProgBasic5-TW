@@ -4,6 +4,15 @@ from view import terminal_view
 from controller import common
 
 
+def ask_untill_correct(list_of_games):
+    is_correct = False
+    FIRST_ELEMENT_IN_LIST = 0
+    while is_correct is not True:
+        id_of_record = terminal_view.get_inputs(["Line number: "], "Please enter value ")
+        is_correct = common.check_is_number(id_of_record[FIRST_ELEMENT_IN_LIST], len(list_of_games))
+    return id_of_record[FIRST_ELEMENT_IN_LIST]
+
+
 def run():
     """
     Starts this module and displays its menu.
@@ -30,14 +39,12 @@ def run():
             new_record.insert(0, store.get_random_id(list_of_games))
             list_of_games = store.add(list_of_games, new_record)
         elif choice == "2":
-            is_correct = False
-            FIRST_ELEMENT_IN_LIST = 0
-            while is_correct is not True:
-                id_of_record_to_remove = terminal_view.get_inputs(["Line_number: "], "Please enter value ")
-                is_correct = common.check_is_number(id_of_record_to_remove[FIRST_ELEMENT_IN_LIST], len(list_of_games))
-            list_of_games = store.remove(list_of_games, common.check_id_by_number(list_of_games, int(id_of_record_to_remove[FIRST_ELEMENT_IN_LIST])))
+            id_of_record_to_remove = ask_untill_correct(list_of_games)
+            list_of_games = store.remove(list_of_games, common.check_id_by_number(list_of_games, int(id_of_record_to_remove)))
         elif choice == "3":
-            pass
+            id_of_record_to_update = ask_untill_correct(list_of_games)
+            updated_record = terminal_view.get_inputs(["Title: ", "Manufacturer: ", "Price: ", "In stock: "], "Please enter value: ")
+            list_of_games = store.update(list_of_games, common.check_id_by_number(list_of_games, int(id_of_record_to_update)), updated_record)
         elif choice == "4":
             pass
         elif choice == "5":

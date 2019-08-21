@@ -108,5 +108,3 @@ def get_random_id(table):
 def export_list_to_file(table):
     data_manager.write_table_to_file("model/store/games.csv", table)
 
-
-

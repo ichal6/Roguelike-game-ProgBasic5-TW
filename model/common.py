@@ -57,6 +57,9 @@ def add(table, new_record):
 
 
 def update(table, id_, update_record):
-    remove(table, id_)
-    table = add(table, update_record)
+    for i in range(len(table)):
+        if table[i][0] == id_:
+            table.insert(i, update_record)
+            table[i].insert(0, generate_random(table))
+            remove(table, table[i+1][0])
     return table
