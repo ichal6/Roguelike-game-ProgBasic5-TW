@@ -79,8 +79,28 @@ def which_year_max(table):
     Returns:
         number
     """
-
     # your code
+    YEAR_START = 1
+    YEAR_STOP = 2100
+    YEAR_INDEX = 3
+    IN_OUT_INDEX = 4
+    COST_INDEX = 5
+    actual_year = 1
+    return_profit = 0
+    profit = 0
+    for actual_year in range(YEAR_START, YEAR_STOP):
+        profit = 0
+        for row in table:
+            if int(row[YEAR_INDEX]) == actual_year:
+                if row[IN_OUT_INDEX] == "in":
+                    profit += int(row[COST_INDEX])
+                else:
+                    profit -= int(row[COST_INDEX])
+
+        if profit > return_profit:
+            return_profit = profit
+
+    return return_profit
 
 
 def avg_amount(table, year):
@@ -94,8 +114,24 @@ def avg_amount(table, year):
     Returns:
         number
     """
-
     # your code
+    YEAR_INDEX = 3
+    IN_OUT_INDEX = 4
+    PROFIT_INDEX = 5
+    profit = 0
+    count = 0
+    averange = 0
+    for row in table:
+        if int(row[YEAR_INDEX]) == year:
+            count += 1
+            if row[IN_OUT_INDEX] == "in":
+                profit += int(row[PROFIT_INDEX])
+            else:
+                profit -= int(row[PROFIT_INDEX])
+    if count != 0:
+        averange = profit / count
+
+    return averange
 
 
 def get_data_to_list():
