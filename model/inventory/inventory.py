@@ -80,8 +80,11 @@ def get_available_items(table):
     """
     YEAR = 3
     DURABILITY = 4
-    available_items = [table[index] for index in range(len(table)) if int(table[index][YEAR])+int(table[index][DURABILITY])>=2019]
+    for element in table:
+        element[4], element[3] = int(element[4]), int(element[3])
+    available_items = [table[index] for index in range(len(table)) if table[index][YEAR]+table[index][DURABILITY]>=2017]
     return available_items
+
 
 def get_average_durability_by_manufacturers(table):
     """
