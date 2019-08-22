@@ -94,7 +94,7 @@ def get_average_durability_by_manufacturers(table):
     Returns:
         dict: a dictionary with this structure: { [manufacturer] : [avg] }
     """
-    MANUFACTURER = 1
+    MANUFACTURER = 2
     DURABILITY = 4
     average_durability = {}
     manaufacturers = list(set([table[index][MANUFACTURER] for index in range(len(table))]))
