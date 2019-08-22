@@ -80,7 +80,9 @@ def get_available_items(table):
     """
     YEAR = 3
     DURABILITY = 4
-    available_items = [table[index] for index in range(len(table)) if int(table[index][YEAR])+int(table[index][DURABILITY])>=2017]
+    for element in table:
+        element[3], element[4] = int(element[3]), int(element[4])
+    available_items = [table[index] for index in range(len(table)) if table[index][YEAR]+table[index][DURABILITY]>=2017]
     return available_items
 
 
@@ -118,4 +120,6 @@ def get_random_id(table):
 
 
 def export_list_to_file(table):
+    for element in table:
+        element[3], element[4] = str(element[3]), str(element[4])
     data_manager.write_table_to_file("model/inventory/inventory.csv", table)
