@@ -29,7 +29,10 @@ def run():
                "Remove a record",
                "Update record",
                "Display available items",
-               "Get average durability by manufacturers"]
+               "Get average durability by manufacturers",
+               "Print Table"]
+
+    title_list = ["ID", "CONSOLA", "PRODUCENT", "YEAR", "DURABILITY"]
 
     choice = None
     while choice != "0":
@@ -51,6 +54,8 @@ def run():
         elif choice == "5":
             average_durability = inventory.get_average_durability_by_manufacturers(list_of_inventory)
             terminal_view.print_result(average_durability, "Average durability by manufacturers")
+        elif choice == "6":
+            terminal_view.print_table(list_of_inventory, title_list)
         elif choice == "0":
             inventory.export_list_to_file(list_of_inventory)
         else:

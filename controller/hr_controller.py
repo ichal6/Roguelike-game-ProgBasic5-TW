@@ -29,7 +29,10 @@ def run():
                "Remove a record",
                "Update record",
                "Search oldest persons",
-               "Search persons closest to average"]
+               "Search persons closest to average",
+               "Print table"]
+
+    title_list = ["ID", "NAME", "YEAR"]
 
     choice = None
     while choice != "0":
@@ -51,6 +54,8 @@ def run():
         elif choice == "5":
             closest_persons_to_avg = hr.get_persons_closest_to_average(list_of_humans)
             terminal_view.print_result(closest_persons_to_avg, "List of persons closest to average year")
+        elif choice == "6":
+            terminal_view.print_table(list_of_humans, title_list)
         elif choice == "0":
             hr.export_list_to_file(list_of_humans)
         else:
