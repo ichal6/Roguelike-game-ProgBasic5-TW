@@ -78,9 +78,10 @@ def get_available_items(table):
     Returns:
         list: list of lists (the inner list contains the whole row with their actual data types)
     """
-
-    # your code
-
+    YEAR = 3
+    DURABILITY = 4
+    available_items = [table[index] for index in range(len(table)) if int(table[index][YEAR])+int(table[index][DURABILITY])>=2019]
+    return available_items
 
 def get_average_durability_by_manufacturers(table):
     """
@@ -92,8 +93,19 @@ def get_average_durability_by_manufacturers(table):
     Returns:
         dict: a dictionary with this structure: { [manufacturer] : [avg] }
     """
-
-    # your code
+    MANUFACTURER = 1
+    DURABILITY = 4
+    average_durability = {}
+    manaufacturers = list(set([table[index][MANUFACTURER] for index in range(len(table))]))
+    for manaufacturer in manaufacturers:
+        count = 0.0
+        sum_durability = 0.0
+        for index in range(len(table)):
+            if manaufacturer == table[index][MANUFACTURER]:
+                count += 1.0
+                sum_durability += float(table[index][DURABILITY])
+        average_durability.update({manaufacturer: float(sum_durability) / float(count)})
+    return average_durability
 
 
 def get_data_to_list():
