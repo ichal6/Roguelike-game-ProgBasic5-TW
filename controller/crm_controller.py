@@ -4,6 +4,21 @@ from model.crm import crm
 from controller import common
 
 
+def id_to_number_of_line(list_of_customers):
+    ID_INDEX = 0
+    is_correct = False
+    number_of_line = 0
+    while is_correct is not True:
+        index_list = 1
+        id_of_record = terminal_view.get_inputs(["ID: "], "Please enter value ")
+        for row in list_of_customers:
+            if row[ID_INDEX] == id_of_record[ID_INDEX]:
+                number_of_line = index_list
+                return number_of_line
+            else:
+                index_list += 1
+
+
 def ask_untill_correct(list_of_customers):
     is_correct = False
     FIRST_ELEMENT_IN_LIST = 0
@@ -42,6 +57,7 @@ def run():
             new_record.insert(0, crm.get_random_id(list_of_customers))
             list_of_customers = crm.add(list_of_customers, new_record)
         elif choice == "2":
+            #  id_of_record_to_remove = id_to_number_of_line(list_of_customers)
             id_of_record_to_remove = ask_untill_correct(list_of_customers)
             list_of_customers = crm.remove(list_of_customers, common.check_id_by_number(list_of_customers, int(id_of_record_to_remove)))
         elif choice == "3":
