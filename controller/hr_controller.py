@@ -49,7 +49,8 @@ def run():
             oldest_persons = hr.get_oldest_person(list_of_humans)
             terminal_view.print_result(oldest_persons, "List of oldest persons")
         elif choice == "5":
-            pass
+            closest_persons_to_avg = hr.get_persons_closest_to_average(list_of_humans)
+            terminal_view.print_result(closest_persons_to_avg, "List of persons closest to average year")
         elif choice == "0":
             hr.export_list_to_file(list_of_humans)
         else:
