@@ -82,6 +82,17 @@ def get_lowest_price_item_id(table):
     """
 
     # your code
+    lowest_price = table[0][2]
+    list_of_lowest_price_names = []
+
+    for line in table:
+        if line[2] < lowest_price:
+            lowest_price = line[2]
+    
+    for line in table:
+        if line[2] == lowest_price:
+            list_of_lowest_price_names.append(line[0])
+    return list_of_lowest_price_names[0]
 
 
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
@@ -102,6 +113,29 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
     """
 
     # your code
+    filtered_table = []
+
+    start_time_range = (int(month_from) * 31 + int(day_from) + int(year_from) * 365)
+    end_time_range = (int(month_to) * 31 + int(day_to) + int(year_to) * 365)
+    time_range = list(range(start_time_range + 1 , end_time_range))
+
+    # start_time_range = (int(month_from) * 31 + int(day_from) + int(year_from) * 365)
+    # end_time_range = (int(month_to) * 31 + int(day_to) + int(year_to) * 365)
+    # time_range = list(range(start_time_range + 1 , end_time_range))
+
+
+    for item in range(len(table)):
+        if ((int(table[item][5]) * 365) + (int(table[item][3]) * 31) + int(table[item][4])) in time_range:
+            filtered_table.append(table[item])
+
+    for line in filtered_table:
+        line[2] = int(line[2])
+        line[3] = int(line[3])
+        line[4] = int(line[4])
+        line[5] = int(line[5])
+    
+    return filtered_table
+
 
 def get_data_to_list():
     return data_manager.get_table_from_file("model/sales/sales.csv")
