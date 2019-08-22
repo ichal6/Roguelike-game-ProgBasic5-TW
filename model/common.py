@@ -63,3 +63,21 @@ def update(table, id_, update_record):
             table[i].insert(0, generate_random(table))
             remove(table, table[i+1][0])
     return table
+
+
+def insertion_sort(table):
+    iter = 0
+
+    size_table = len(table)
+
+    while iter < size_table:
+        j = 0
+        while j <= size_table-2:
+            if table[j] > table[j+1]:
+                temp = table[j+1]
+                table[j+1] = table[j]
+                table[j] = temp
+            j = j+1
+        iter += 1
+
+    return table

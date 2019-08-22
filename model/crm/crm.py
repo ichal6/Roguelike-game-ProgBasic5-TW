@@ -94,6 +94,16 @@ def get_subscribed_emails(table):
         Returns:
             list: list of strings (where a string is like "email;name")
         """
+    SUBSCRIBED_CHOICE = 3
+    E_MAIL_USER = 2
+    NAME_USER = 1
+    list_subscribe = []
+    for user in table:
+        if user[SUBSCRIBED_CHOICE] == "1":
+            email_name = "{};{}".format(user[E_MAIL_USER], user[NAME_USER])
+            list_subscribe.append(email_name)
+
+    return list_subscribe
 
     # your code
 

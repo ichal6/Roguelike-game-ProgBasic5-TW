@@ -48,7 +48,7 @@ def run():
         elif choice == "4":
             pass
         elif choice == "5":
-            pass
+            terminal_view.print_result(crm.get_subscribed_emails(list_of_games), "List of subsrcibe user")
         elif choice == "0":
             crm.export_list_to_file(list_of_games)
         else:
