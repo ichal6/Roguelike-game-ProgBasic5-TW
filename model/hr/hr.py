@@ -81,9 +81,17 @@ def get_oldest_person(table):
     Returns:
         list: A list of strings (name or names if there are two more with the same value)
     """
+    YEAR = 2
+    NAME = 1
+    FIRST_LINE = 0
+    oldest_year = int(table[FIRST_LINE][YEAR])
+    for index in range(len(table)):
+        if int(table[index][YEAR]) < oldest_year:
+            oldest_year = int(table[index][YEAR])
 
-    # your code
+    oldest_persons_names = [table[index][NAME] for index in range(len(table)) if int(table[index][YEAR]) == oldest_year]
 
+    return oldest_persons_names
 
 def get_persons_closest_to_average(table):
     """
