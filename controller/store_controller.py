@@ -29,7 +29,8 @@ def run():
                "Remove a record",
                "Update record",
                "Count games each manufacturer",
-               "Average of games"]
+               "Average of games",
+               "Print table"]
 
     choice = None
 
@@ -49,12 +50,18 @@ def run():
             updated_record = terminal_view.get_inputs(["Title: ", "Manufacturer: ", "Price: ", "In stock: "], "Please enter value: ")
             list_of_games = store.update(list_of_games, common.check_id_by_number(list_of_games, int(id_of_record_to_update)), updated_record)
         elif choice == "4":
-            pass
+            label = "The kinds of game that are available of each manufacturer: "
+            result = store.get_counts_by_manufacturers(list_of_games)
+            terminal_view.print_result(result, label)
         elif choice == "5":
-            pass
+            manufacturer = terminal_view.get_inputs(['Manufacturer : '], 'Please select a manufacturer :')
+            manufacturer = manufacturer[0]
+            result = str(store.get_average_by_manufacturer(list_of_games, manufacturer))
+            label = "The average amount of games in stock of {} ".format(manufacturer)
+            terminal_view.print_result(result, label)
+        elif choice == '6':
+            terminal_view.print_table(list_of_games, title_list)
         elif choice == "0":
             store.export_list_to_file(list_of_games)
-        elif choice == "*":
-            terminal_view.print_table(list_of_games, title_list)
         else:
             terminal_view.print_error_message("There is no such choice.")
