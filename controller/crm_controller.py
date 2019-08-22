@@ -49,7 +49,7 @@ def run():
             updated_record = terminal_view.get_inputs(["Name: ", "e-mail: ", "subscribed: "], "Please enter value: ")
             list_of_customers = crm.update(list_of_customers, common.check_id_by_number(list_of_customers, int(id_of_record_to_update)), updated_record)
         elif choice == "4":
-            terminal_view.print_result(crm.get_longest_name_id(list_of_customers), "Oldest person's ID")
+            terminal_view.print_result(crm.get_longest_name_id(list_of_customers), "Longest person's ID")
         elif choice == "5":
             terminal_view.print_result(crm.get_subscribed_emails(list_of_customers), "List of subsrcibe user")
         elif choice == "6":
