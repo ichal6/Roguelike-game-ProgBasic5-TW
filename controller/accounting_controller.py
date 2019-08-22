@@ -30,13 +30,16 @@ def run():
                "Remove a record",
                "Update record",
                "Which year has the highest profit?",
-               "What is the average per item"]
+               "What is the average per item",
+               "Print table"]
+
+    title_list = ["ID", "Month", "Day", "Year", "Type", "Amount"]
 
     choice = None
     while choice != "0":
         choice = terminal_view.get_choice(options, "Back to main menu")
         if choice == "1":
-            new_record = terminal_view.get_inputs(["Month: ", "Day: ", "Year: ", "Type: ", "Amount :"], "Please enter value: ")
+            new_record = terminal_view.get_inputs(["Month: ", "Day: ", "Year: ", "Type: ", "Amount: "], "Please enter value: ")
             new_record.insert(0, accounting.get_random_id(list_of_accounting))
             list_of_accounting = accounting.add(list_of_accounting, new_record)
         elif choice == "2":
@@ -53,6 +56,8 @@ def run():
             year_of_check = ask_untill_correct()
             result = accounting.avg_amount(list_of_accounting, year_of_check)
             terminal_view.print_result(str(result), "Avernage items by year")
+        elif choice == "6":
+            terminal_view.print_table(list_of_accounting, title_list)
         elif choice == "0":
             accounting.export_list_to_file(list_of_accounting)
         else:
