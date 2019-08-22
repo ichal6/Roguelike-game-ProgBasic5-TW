@@ -46,7 +46,7 @@ def run():
             updated_record = terminal_view.get_inputs(["Name: ", "e-mail: ", "subscribed: "], "Please enter value: ")
             list_of_games = crm.update(list_of_games, common.check_id_by_number(list_of_games, int(id_of_record_to_update)), updated_record)
         elif choice == "4":
-            pass
+            print(crm.get_longest_name_id(list_of_games))
         elif choice == "5":
             terminal_view.print_result(crm.get_subscribed_emails(list_of_games), "List of subsrcibe user")
         elif choice == "0":

@@ -79,7 +79,23 @@ def get_longest_name_id(table):
                 the last by alphabetical order of the names)
         """
 
-    # your code
+    NAME = 1
+    ID = 0
+    FIRST_ELEMENT = 0
+    LAST_ELEMENT = -1
+    longest_names = []
+    longest_name = len(table[FIRST_ELEMENT][NAME])
+    for index in range(len(table)):
+        if len(table[index][NAME]) > longest_name:
+            longest_name = len(table[index][NAME])
+    for index in range(len(table)):
+        if len(table[index][NAME]) == longest_name:
+            longest_names.append(table[index][NAME])
+    common.insertion(longest_names)
+    for index in range(len(table)):
+        if table[index][NAME] == longest_names[LAST_ELEMENT]:
+            return table[index][ID]
+
 
 
 # the question: Which customers has subscribed to the newsletter?

@@ -65,7 +65,7 @@ def update(table, id_, update_record):
     return table
 
 
-def insertion_sort(table):
+def insertion(table):
     iter = 0
 
     size_table = len(table)
