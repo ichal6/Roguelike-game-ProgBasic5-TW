@@ -86,7 +86,8 @@ def which_year_max(table):
     IN_OUT_INDEX = 4
     COST_INDEX = 5
     actual_year = 1
-    return_profit = 0
+    max_profit = 0
+    return_year = 0
     profit = 0
     for actual_year in range(YEAR_START, YEAR_STOP):
         profit = 0
@@ -97,10 +98,11 @@ def which_year_max(table):
                 else:
                     profit -= int(row[COST_INDEX])
 
-        if profit > return_profit:
-            return_profit = profit
+        if profit > max_profit:
+            max_profit = profit
+            return_year = actual_year
 
-    return return_profit
+    return return_year
 
 
 def avg_amount(table, year):
