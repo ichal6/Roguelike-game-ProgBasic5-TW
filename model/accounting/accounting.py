@@ -133,7 +133,7 @@ def avg_amount(table, year):
     if count != 0:
         averange = profit / count
 
-    return averange
+    return round(averange, 2)
 
 
 def get_data_to_list():
