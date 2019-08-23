@@ -29,35 +29,47 @@ def print_table(table, title_list):
     """
 
     # your goes code
+    title_list.insert(0,'NUMBER')
+
+    count = 0
+
+    for row in table:
+        count += 1
+        row.insert(0, str(count))
+
     table.insert(0, title_list)
+
     
+
     len_col = []
-    x = 0
-    for i in table:
+    index = 0
+    for row in table:
         len_col.append([])
-        for j in range(len(i)):
-            longest_name = len(i[j])
-            len_col[x].append(longest_name)
-        x += 1
+        for number in range(len(row)):
+            longest_name = len(row[number])
+            len_col[index].append(longest_name)
+        index += 1
 
     max_line_len = []
-    for i in range(len(title_list)):
+    for number in range(len(title_list)):
         max_line_len.append([])
-        for k in len_col:
-            max_line_len[i].append(k[i])
+        for col in len_col:
+            max_line_len[number].append(col[number])
 
-    max_line_len = [(max(i)) for i in max_line_len]
+    max_line_len = [(max(line)) for line in max_line_len]
     max_line = sum_position(max_line_len)
 
     dashed_line = ("═" * int(max_line + 1 + len(title_list)))
-    head = [(title_list[q].rjust(max_line_len[q])+'│') for q in range(len(title_list))]
+    head = [(title_list[index].rjust(max_line_len[index])+'│') for index in range(len(title_list))]
     header = '│' + ''.join(head)
     table.pop(0)
     print(dashed_line)
     print(header)
     print(dashed_line)
-    for i in table:
-        body_list = [(i[q].rjust(max_line_len[q])+'│') for q in range(len(i))]
+    
+    
+    for row in table:
+        body_list = [(row[index].rjust(max_line_len[index])+'│') for index in range(len(row))]
         body = '│' + ''.join(body_list)
         print(body)
     print(dashed_line)
@@ -78,9 +90,9 @@ def print_result(result, label):
 
     if isinstance(result, dict):
         print('{0:>35}'.format(label))
-        to_print_a = [[i[0], i[1]] for i in result.items()]
-        to_print_b = [('{0:>35} : {1:>1}'.format(i[0], i[1])) for i in to_print_a]
-        [print(i) for i in to_print_b]
+        to_print_a = [[item[0], item[1]] for item in result.items()]
+        to_print_b = [('{0:>35} : {1:>1}'.format(item[0], item[1])) for item in to_print_a]
+        [print(element) for element in to_print_b]
     elif isinstance(result, list):
         if isinstance(result[0], list):
             print('{0:>20}'.format(label))
@@ -93,7 +105,7 @@ def print_result(result, label):
                 print(body)
         else:
             print('{0:>20}'.format(label))
-            [print('{0:>20}'.format(i)) for i in result]
+            [print('{0:>20}'.format(item)) for item in result]
 
     elif isinstance(result, str):
         print('{} : {}'.format(label, result))
