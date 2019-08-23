@@ -66,6 +66,7 @@ def update(table, id_, update_record):
 
 
 def insertion(table):
+    ''' function alphabetical compose order'''
     iter = 0
 
     size_table = len(table)

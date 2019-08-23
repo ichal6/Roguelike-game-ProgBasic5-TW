@@ -38,7 +38,9 @@ def run():
     while choice != "0":
         choice = terminal_view.get_choice(options, "Back to main menu")
         if choice == "1":
+            
             new_record = terminal_view.get_inputs(["Name: ", "Birthyear: "], "Please enter value: ")
+            
             new_record.insert(0, hr.get_random_id(list_of_humans))
             list_of_humans = hr.add(list_of_humans, new_record)
         elif choice == "2":
