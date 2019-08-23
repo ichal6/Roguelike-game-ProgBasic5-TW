@@ -68,7 +68,7 @@ def run():
             month_to = int(month_to[0])
             day_to = int(day_to[0])
             year_to = int(year_to[0])
-            result = str(sales.get_items_sold_between(list_of_games, month_from, day_from, year_from, month_to, day_to, year_to))
+            result = (sales.get_items_sold_between(list_of_games, month_from, day_from, year_from, month_to, day_to, year_to))
             terminal_view.print_result(result, label)
         elif choice == "6":
             terminal_view.print_table(list_of_games, title_list)
