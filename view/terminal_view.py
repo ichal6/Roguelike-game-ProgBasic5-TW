@@ -39,7 +39,6 @@ def print_table(table, title_list):
 
     table.insert(0, title_list)
 
-    
 
     len_col = []
     index = 0
@@ -73,6 +72,12 @@ def print_table(table, title_list):
         body = '│' + ''.join(body_list)
         print(body)
     print(dashed_line)
+
+
+    for row in table:
+        row.pop(0)
+
+    title_list.pop(0)
 
 def print_result(result, label):
     """
@@ -109,6 +114,8 @@ def print_result(result, label):
 
     elif isinstance(result, str):
         print('{} : {}'.format(label, result))
+
+        
         
 
 def print_menu(title, list_options, exit_message):
